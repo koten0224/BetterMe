@@ -3,6 +3,9 @@
 # Use this hook to configure devise mailer, warden hooks and so forth.
 # Many of these configuration options can be set straight in your model.
 Devise.setup do |config|
+  config.omniauth :facebook, ENV['FB_API_ID'], ENV['FB_API_PASSWORD'], scope: "public_profile,email", info_fields: "email,name"
+  config.omniauth :google_oauth2, ENV["GOOGLE_API_ID"], ENV["GOOGLE_API_PASSWORD"],{access_type: "offline", approval_prompt: ""}
+
   # The secret key used by Devise. Devise uses this key to generate
   # random tokens. Changing this key will render invalid all existing
   # confirmation, reset password and unlock tokens in the database.
